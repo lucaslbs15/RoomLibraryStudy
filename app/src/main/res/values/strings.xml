@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Room Library Study</string>
+    <string name="database_name">roomlibrarystudy</string>
+    <string name="activity_main_welcome">We are testing the awesome Room Library!!!</string>
+    <string name="activity_main_name">Nome</string>
+    <string name="activity_main_middle_name">Sobrenome do meio</string>
+    <string name="activity_main_last_name">Último sobrenome</string>
+    <string name="activity_main_phone">Telefone</string>
+    <string name="activity_main_email">E-mail</string>
+    <string name="activity_main_identity">Identidade</string>
+    <string name="activity_main_address">Endereço</string>
+    <string name="activity_main_complement">Complemento</string>
+    <string name="activity_main_zip_code">CEP</string>
+    <string name="activity_main_city">Cidade</string>
+    <string name="activity_main_state">Estado</string>
+    <string name="activity_main_save_form">Salvar formulário</string>
+    <string name="activity_main_update_form">Atualizar formulário</string>
+    <string name="activity_main_list_users">Listar usuários</string>
+    <string name="activity_main_saved">Usuário salvo com sucesso</string>
+    <string name="activity_main_save_error">Erro ao salvar o usuário</string>
+</resources>
