@@ -5,7 +5,12 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 
-class DatabaseHelper : SQLiteOpenHelper {
+class DatabaseHelper(context: Context,
+                     databaseName: String,
+                     databaseVersion: Int) :
+        SQLiteOpenHelper(context,
+                databaseName, null,
+                databaseVersion) {
 
     private val context: Context
     private val LOG_TAG: String = "DatabaseHelper"
@@ -37,8 +42,7 @@ class DatabaseHelper : SQLiteOpenHelper {
             "FOREIGN KEY(customer_id) REFERENCES customer(id) " +
             ");"
 
-    constructor(context: Context, databaseName: String, databaseVersion: Int)
-            : super(context, databaseName, null, databaseVersion) {
+    init {
         this.context = context
         Log.i(LOG_TAG, "classes initialized")
     }

@@ -5,9 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import com.example.lucaslbs15.roomlibrarystudy.model.Contact
 
-class ContactDAO : BasicDAO {
-
-    constructor(context: Context) : super(context)
+class ContactDAO(context: Context) : BasicDAO(context) {
 
     private fun getValues(contact: Contact): ContentValues {
         val values = ContentValues()
