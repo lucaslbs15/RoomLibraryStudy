@@ -1,6 +1,8 @@
 package com.example.lucaslbs15.roomlibrarystudy.activity
 
 import android.app.Activity
+import android.arch.persistence.room.Room
+import android.arch.persistence.room.RoomDatabase
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
@@ -9,6 +11,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.lucaslbs15.roomlibrarystudy.R
+import com.example.lucaslbs15.roomlibrarystudy.database.AppDatabase
 import com.example.lucaslbs15.roomlibrarystudy.database.DatabaseHelper
 import com.example.lucaslbs15.roomlibrarystudy.database.repository.CustomerRepository
 import com.example.lucaslbs15.roomlibrarystudy.databinding.ActivityMainBinding
@@ -20,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private val LIST_REQUEST_CODE = 15
     private var binding: ActivityMainBinding? = null
     private var customerId = -1
+    private var appDatabase: AppDatabase? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +36,10 @@ class MainActivity : AppCompatActivity() {
         } catch (ex: Exception) {
             Log.e(LOG_TAG, String.format("initDatabase() exception: %s", ex.message))
         }
+    }
+
+    private fun initDatabase() {
+        appDatabase = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "room-database").build()
     }
 
     override fun onResume() {
@@ -169,11 +177,5 @@ class MainActivity : AppCompatActivity() {
         binding?.activityMainZipCodeEditText?.text?.append(customer.address.zipCode)
         binding?.activityMainCityEditText?.text?.append(customer.address.city)
         binding?.activityMainStateEditText?.text?.append(customer.address.state)
-    }
-
-    private fun initDatabase() {
-        DatabaseHelper(this,
-                getString(R.string.database_name),
-                resources.getInteger(R.integer.database_version))
     }
 }
