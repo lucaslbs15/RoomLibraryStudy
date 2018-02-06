@@ -2,6 +2,7 @@ package com.example.lucaslbs15.roomlibrarystudy.model
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
+import android.arch.persistence.room.Ignore
 import android.arch.persistence.room.PrimaryKey
 import java.io.Serializable
 
@@ -19,7 +20,9 @@ class Customer(name: String, middleName: String, lastName: String, identity: Str
     var lastName: String
     @ColumnInfo(name = "identity")
     var identity: String
+    @Ignore
     var address: Address
+    @Ignore
     var contact: Contact
 
     init {

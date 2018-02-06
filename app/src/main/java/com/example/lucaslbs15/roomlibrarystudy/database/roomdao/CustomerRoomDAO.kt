@@ -13,7 +13,7 @@ interface CustomerRoomDAO {
     fun insert(customer: Customer) : Long
 
     @Update
-    fun update(customer: Customer) : Boolean
+    fun update(customer: Customer) : Int
 
     @Query("SELECT * FROM customer WHERE id = (:id)")
     fun selectById(id: Int) : Customer?

@@ -13,7 +13,7 @@ interface ContactRoomDAO {
     fun insert(address: Contact)
 
     @Update
-    fun update(address: Contact) : Boolean
+    fun update(address: Contact) : Int
 
     @Query("SELECT * FROM contact WHERE customer_id = (:customerId)")
     fun selectByCustomerId(customerId: Int) : Contact?

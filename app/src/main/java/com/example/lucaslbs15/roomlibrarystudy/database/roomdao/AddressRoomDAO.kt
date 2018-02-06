@@ -13,7 +13,7 @@ interface AddressRoomDAO {
     fun insert(address: Address)
 
     @Update
-    fun update(address: Address) : Boolean
+    fun update(address: Address) : Int
 
     @Query("SELECT * FROM address WHERE customer_id = (:customerId)")
     fun selectByCustomerId(customerId: Int) : Address?

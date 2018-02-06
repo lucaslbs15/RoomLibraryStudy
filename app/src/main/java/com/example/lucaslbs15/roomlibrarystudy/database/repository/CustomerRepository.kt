@@ -33,11 +33,12 @@ class CustomerRepository(context: Context) {
     }
 
     fun update(customer: Customer) : Boolean {
-        var ret = true
-        appDatabase?.customerDAO()?.update(customer)
-        appDatabase?.contactDAO()?.update(customer.contact)
-        appDatabase?.addressDAO()?.update(customer.address)
-        return ret
+        val rowCustomerUpdated = appDatabase?.customerDAO()?.update(customer)
+        val rowContactUpdated = appDatabase?.contactDAO()?.update(customer.contact)
+        val rowAddressUpdated = appDatabase?.addressDAO()?.update(customer.address)
+        return (rowCustomerUpdated != null && rowCustomerUpdated > 0
+                && rowContactUpdated != null && rowContactUpdated > 0
+                && rowAddressUpdated != null && rowAddressUpdated > 0)
     }
 
     fun select(customerId: Int) : Customer? {
