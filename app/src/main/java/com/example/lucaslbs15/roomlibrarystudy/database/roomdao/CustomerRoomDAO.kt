@@ -23,4 +23,5 @@ interface CustomerRoomDAO {
 
     @Query("SELECT * FROM customer")
     fun listAll() : List<Customer>?
+
 }

@@ -22,9 +22,17 @@ class ListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_list)
 
-        getAllCustomers()
-        iniAdapter()
-        initOnItemClickListener()
+        init()
+    }
+
+    private fun init() {
+        Thread(Runnable {
+            getAllCustomers()
+            runOnUiThread {
+                iniAdapter()
+                initOnItemClickListener()
+            }
+        }).start()
     }
 
     private fun getAllCustomers() {

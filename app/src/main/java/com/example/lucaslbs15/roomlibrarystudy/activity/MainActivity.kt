@@ -7,6 +7,9 @@ import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.support.annotation.UiThread
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -63,7 +66,9 @@ class MainActivity : AppCompatActivity() {
     private fun initSaveFormListener() {
         binding?.activityMainSaveFormButton?.setOnClickListener(
                 View.OnClickListener {
-                    saveForm()
+                    Thread(Runnable {
+                        saveForm()
+                    }).start()
                 }
         )
     }
@@ -77,6 +82,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveForm() {
+        Log.i(LOG_TAG, "saveForm() called")
         val customer = populateCustomer()
         val repository = CustomerRepository(this)
         val result: Boolean
@@ -89,11 +95,15 @@ class MainActivity : AppCompatActivity() {
 
         if (result) {
             Log.i(LOG_TAG, "customer saved")
-            clearForm()
-            setButtonText()
-            Toast.makeText(this, getString(R.string.activity_main_saved), Toast.LENGTH_SHORT).show()
+            runOnUiThread {
+                clearForm()
+                setButtonText()
+                Toast.makeText(this, getString(R.string.activity_main_saved), Toast.LENGTH_SHORT).show()
+            }
         } else {
-            Toast.makeText(this, getString(R.string.activity_main_save_error), Toast.LENGTH_SHORT).show()
+            runOnUiThread {
+                Toast.makeText(this, getString(R.string.activity_main_save_error), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

@@ -10,7 +10,7 @@ class Address : Serializable {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    var id: Int = 0
+    var id: Int? = null
     @ColumnInfo(name = "zip_code")
     var zipCode: String
     @ColumnInfo(name = "street")
