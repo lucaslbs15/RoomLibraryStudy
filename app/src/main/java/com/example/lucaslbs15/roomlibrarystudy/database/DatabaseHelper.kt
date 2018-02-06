@@ -13,6 +13,7 @@ class DatabaseHelper(context: Context,
                 databaseVersion) {
 
     private val context: Context
+    
     private val LOG_TAG: String = "DatabaseHelper"
 
     private val createCustomer: String = "CREATE TABLE customer (" +
