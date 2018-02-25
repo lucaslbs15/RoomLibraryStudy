@@ -2,10 +2,12 @@ package com.example.lucaslbs15.roomlibrarystudy.model
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
+import android.arch.persistence.room.ForeignKey
 import android.arch.persistence.room.PrimaryKey
 import java.io.Serializable
 
 @Entity(tableName = "address")
+@ForeignKey(entity = Customer::class, parentColumns = arrayOf("id"), childColumns = arrayOf("customer_id"))
 class Address : Serializable {
 
     @PrimaryKey(autoGenerate = true)
