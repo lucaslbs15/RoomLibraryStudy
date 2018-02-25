@@ -19,6 +19,7 @@ class CustomerRepository(context: Context) {
 
     fun save(customer: Customer) : Boolean {
         var ret = true
+        customer.id = getNextId()
         val customerId = appDatabase?.customerDAO()?.insert(customer)
         if (customerId == null || customerId < 0) {
             return false
@@ -30,6 +31,15 @@ class CustomerRepository(context: Context) {
         customer.address.customerId = customerId.toInt()
         appDatabase?.addressDAO()?.insert(customer.address!!)
         return ret
+    }
+
+    private fun getNextId() : Int {
+        val customers = appDatabase?.customerDAO()?.listAll()
+        if (customers != null && customers.isNotEmpty()) {
+            val customer = customers.last()
+            return customer.id + 1
+        }
+        return 1
     }
 
     fun update(customer: Customer) : Boolean {
