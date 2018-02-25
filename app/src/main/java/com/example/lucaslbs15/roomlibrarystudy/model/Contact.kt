@@ -3,11 +3,16 @@ package com.example.lucaslbs15.roomlibrarystudy.model
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.ForeignKey
+import android.arch.persistence.room.ForeignKey.CASCADE
 import android.arch.persistence.room.PrimaryKey
 import java.io.Serializable
 
-@Entity(tableName = "contact")
-@ForeignKey(entity = Customer::class, parentColumns = arrayOf("id"), childColumns = arrayOf("customer_id"))
+@Entity(tableName = "contact",
+        foreignKeys = arrayOf(
+                ForeignKey(entity = Customer::class,
+                        parentColumns = arrayOf("id"),
+                        childColumns = arrayOf("customer_id"),
+                        onDelete = CASCADE)))
 class Contact : Serializable {
 
     @PrimaryKey(autoGenerate = true)
