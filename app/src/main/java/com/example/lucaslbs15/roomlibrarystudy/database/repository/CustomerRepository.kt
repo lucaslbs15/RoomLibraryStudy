@@ -1,8 +1,8 @@
 package com.example.lucaslbs15.roomlibrarystudy.database.repository
 
-import android.arch.persistence.room.Room
 import android.content.Context
 import com.example.lucaslbs15.roomlibrarystudy.database.AppDatabase
+import com.example.lucaslbs15.roomlibrarystudy.database.migration.RoomDatabaseBuilder
 import com.example.lucaslbs15.roomlibrarystudy.model.Address
 import com.example.lucaslbs15.roomlibrarystudy.model.Contact
 import com.example.lucaslbs15.roomlibrarystudy.model.Customer
@@ -14,7 +14,7 @@ class CustomerRepository(context: Context) {
 
     init {
         this.context = context
-        appDatabase = Room.databaseBuilder(context, AppDatabase::class.java, "room-database").build()
+        appDatabase = RoomDatabaseBuilder.doMigration(context)
     }
 
     fun save(customer: Customer) : Boolean {

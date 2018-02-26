@@ -7,7 +7,9 @@ import android.arch.persistence.room.PrimaryKey
 import java.io.Serializable
 
 @Entity(tableName = "customer")
-class Customer(name: String, middleName: String, lastName: String, identity: String) : Serializable {
+class Customer(name: String, middleName: String,
+               lastName: String, identity: String,
+               nickname: String) : Serializable {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -24,6 +26,8 @@ class Customer(name: String, middleName: String, lastName: String, identity: Str
     var address: Address
     @Ignore
     var contact: Contact
+    @ColumnInfo(name = "nickname")
+    var nickname: String
 
     init {
         this.name = name
@@ -32,5 +36,6 @@ class Customer(name: String, middleName: String, lastName: String, identity: Str
         this.identity = identity
         this.address = Address()
         this.contact = Contact()
+        this.nickname = nickname
     }
 }

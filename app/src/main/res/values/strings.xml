@@ -2,6 +2,7 @@
     <string name="app_name">Room Library Study</string>
     <string name="database_name">roomlibrarystudy</string>
     <string name="activity_main_welcome">We are testing the awesome Room Library!!!</string>
+    <string name="activity_main_nickname">Apelido</string>
     <string name="activity_main_name">Nome</string>
     <string name="activity_main_middle_name">Sobrenome do meio</string>
     <string name="activity_main_last_name">Último sobrenome</string>

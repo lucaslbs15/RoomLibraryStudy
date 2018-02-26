@@ -9,7 +9,7 @@ import com.example.lucaslbs15.roomlibrarystudy.model.Address
 import com.example.lucaslbs15.roomlibrarystudy.model.Contact
 import com.example.lucaslbs15.roomlibrarystudy.model.Customer
 
-@Database(entities = arrayOf(Customer::class, Address::class, Contact::class), version = 1, exportSchema = false)
+@Database(entities = arrayOf(Customer::class, Address::class, Contact::class), version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun customerDAO() : CustomerRoomDAO

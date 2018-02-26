@@ -68,8 +68,9 @@ class CustomerDAO(context: Context) : BasicDAO(context) {
                 val middleName = cursor.getString(2)
                 val lastName = cursor.getString(3)
                 val identity = cursor.getString(4)
+                val nickname = cursor.getString(5)
 
-                customer = Customer(name, middleName, lastName, identity)
+                customer = Customer(name, middleName, lastName, identity, nickname)
                 customer.id = id
             }
             cursor.close()
@@ -100,8 +101,9 @@ class CustomerDAO(context: Context) : BasicDAO(context) {
                 val middleName = cursor.getString(2)
                 val lastName = cursor.getString(3)
                 val identity = cursor.getString(4)
+                val nickname = cursor.getString(5)
 
-                customer = Customer(name, middleName, lastName, identity)
+                customer = Customer(name, middleName, lastName, identity, nickname)
                 customer.id = id
             }
             cursor.close()
@@ -132,8 +134,9 @@ class CustomerDAO(context: Context) : BasicDAO(context) {
                     val middleName = cursor.getString(2)
                     val lastName = cursor.getString(3)
                     val identity = cursor.getString(4)
+                    val nickname = cursor.getString(5)
 
-                    customer = Customer(name, middleName, lastName, identity)
+                    customer = Customer(name, middleName, lastName, identity, nickname)
                     customer.id = id
                     customers.add(customer)
                 }

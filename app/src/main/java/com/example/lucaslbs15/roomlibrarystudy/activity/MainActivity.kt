@@ -2,20 +2,16 @@ package com.example.lucaslbs15.roomlibrarystudy.activity
 
 import android.app.Activity
 import android.arch.persistence.room.Room
-import android.arch.persistence.room.RoomDatabase
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.support.annotation.UiThread
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.lucaslbs15.roomlibrarystudy.R
 import com.example.lucaslbs15.roomlibrarystudy.database.AppDatabase
-import com.example.lucaslbs15.roomlibrarystudy.database.DatabaseHelper
+import com.example.lucaslbs15.roomlibrarystudy.database.migration.RoomDatabaseBuilder
 import com.example.lucaslbs15.roomlibrarystudy.database.repository.CustomerRepository
 import com.example.lucaslbs15.roomlibrarystudy.databinding.ActivityMainBinding
 import com.example.lucaslbs15.roomlibrarystudy.model.Customer
@@ -36,13 +32,18 @@ class MainActivity : AppCompatActivity() {
 
         try {
             initDatabase()
+            initMigration()
         } catch (ex: Exception) {
             Log.e(LOG_TAG, String.format("initDatabase() exception: %s", ex.message))
         }
     }
 
     private fun initDatabase() {
-        appDatabase = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "room-database").build()
+        appDatabase = Room.databaseBuilder(applicationContext, AppDatabase::class.java, getString(R.string.database_name)).build()
+    }
+
+    private fun initMigration() {
+        RoomDatabaseBuilder.doMigration(applicationContext)
     }
 
     override fun onResume() {
@@ -108,12 +109,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun populateCustomer() : Customer {
+        val nickname = binding?.activityMainNicknameEditText?.text.toString()
         val name = binding?.activityMainNameEditText?.text.toString()
         val middleName = binding?.activityMainMiddleEditText?.text.toString()
         val lastName = binding?.activityMainLastEditText?.text.toString()
         val identity = binding?.activityMainIdentityEditText?.text.toString()
 
-        val customer = Customer(name, middleName, lastName, identity)
+        val customer = Customer(name, middleName, lastName, identity, nickname)
         customer.id = customerId
 
         customer.contact.idCustomer = customerId

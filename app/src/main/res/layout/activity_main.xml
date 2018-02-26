@@ -37,28 +37,38 @@
                 android:orientation="vertical">
 
                 <EditText
+                    android:id="@+id/activity_main_nickname_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textNoSuggestions"
+                    android:hint="@string/activity_main_nickname"/>
+
+                <EditText
                     android:id="@+id/activity_main_name_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
                     android:hint="@string/activity_main_name"/>
 
                 <EditText
                     android:id="@+id/activity_main_middle_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
                     android:hint="@string/activity_main_middle_name"/>
 
                 <EditText
                     android:id="@+id/activity_main_last_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
                     android:hint="@string/activity_main_last_name"/>
 
                 <EditText
                     android:id="@+id/activity_main_identity_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
+                    android:inputType="number"
                     android:hint="@string/activity_main_identity"/>
 
                 <EditText
@@ -79,30 +89,35 @@
                     android:id="@+id/activity_main_address_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:hint="@string/activity_main_address"/>
 
                 <EditText
                     android:id="@+id/activity_main_complement_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:hint="@string/activity_main_complement"/>
 
                 <EditText
                     android:id="@+id/activity_main_zip_code_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:hint="@string/activity_main_zip_code"/>
 
                 <EditText
                     android:id="@+id/activity_main_city_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:hint="@string/activity_main_city"/>
 
                 <EditText
                     android:id="@+id/activity_main_state_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
                     android:hint="@string/activity_main_state"/>
             </LinearLayout>
         </ScrollView>
